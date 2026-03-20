@@ -30,6 +30,14 @@ export default function Drone3DViewer() {
   const droneTargetYRef = useRef(0)
   const controlsRef     = useRef<any>(null)
 
+  // Drone3DViewer mounts async (via next/dynamic), AFTER ScrollRevealProvider
+  // has already set up its IntersectionObserver. Manually trigger reveal here.
+  useEffect(() => {
+    document.querySelectorAll('#drone3d [data-reveal]').forEach(el => {
+      el.classList.add('is-revealed')
+    })
+  }, [])
+
   useEffect(() => {
     if (!canvasRef.current || !wrapRef.current) return
 
