@@ -1,6 +1,8 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import * as THREE from 'three'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { CONFIGURATOR_MODELS } from '@/lib/data'
 
 interface ConfigModel {
@@ -34,10 +36,7 @@ export default function Drone3DViewer() {
     let animId: number
     let ro: ResizeObserver
 
-    ;(async () => {
-      const THREE = await import('three')
-      const { OrbitControls } = await import('three/examples/jsm/controls/OrbitControls.js')
-
+    {
       const canvas = canvasRef.current!
       const wrap   = wrapRef.current!
       const hint   = hintRef.current
@@ -260,7 +259,7 @@ export default function Drone3DViewer() {
 
       ro = new ResizeObserver(syncSize)
       ro.observe(wrap)
-    })()
+    }
 
     return () => {
       if (animId) cancelAnimationFrame(animId)
