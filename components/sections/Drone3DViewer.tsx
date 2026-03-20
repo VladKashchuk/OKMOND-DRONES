@@ -36,7 +36,7 @@ export default function Drone3DViewer() {
 
     ;(async () => {
       const THREE = await import('three')
-      const { OrbitControls } = await import('three/addons/controls/OrbitControls.js' as any)
+      const { OrbitControls } = await import('three/examples/jsm/controls/OrbitControls.js')
 
       const canvas = canvasRef.current!
       const wrap   = wrapRef.current!
