@@ -29,7 +29,7 @@ export default function Product2() {
             </div>
           ))}
         </div>
-        <Link href="#" className="btn-secondary" style={{ borderColor: 'rgba(200,168,75,0.4)', color: 'var(--gold)', alignSelf: 'flex-start' }}>
+        <Link href="/products/ok-7-assault" className="btn-secondary" style={{ borderColor: 'rgba(200,168,75,0.4)', color: 'var(--gold)', alignSelf: 'flex-start' }}>
           Детальніше →
         </Link>
       </div>

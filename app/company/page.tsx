@@ -130,8 +130,8 @@ export default function CompanyPage() {
           <h2 className="cta-title">РАЗОМ ДО ПЕРЕМОГИ</h2>
           <p className="cta-sub">Ми шукаємо інженерів, операторів та партнерів, які поділяють нашу місію.</p>
           <div className="cta-buttons">
-            <a href="#" className="btn-dark">Кар&apos;єра</a>
-            <a href="#" className="btn-dark-outline">Зв&apos;язатися</a>
+            <a href="/partners" className="btn-dark">Зв&apos;язатися</a>
+            <a href="/products" className="btn-dark-outline">Продукція</a>
           </div>
         </div>
       </section>

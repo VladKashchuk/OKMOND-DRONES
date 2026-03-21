@@ -96,7 +96,7 @@ export default function Hero() {
             <strong>Для сил спеціальних операцій.</strong><br />
             Розроблено в Україні для реального<br />бойового застосування.
           </p>
-          <a href="#" className="hero-arrow-btn">
+          <a href="/products" className="hero-arrow-btn">
             <svg viewBox="0 0 24 24" strokeWidth="1.5">
               <line x1="5" y1="19" x2="19" y2="5" />
               <polyline points="9,5 19,5 19,15" />

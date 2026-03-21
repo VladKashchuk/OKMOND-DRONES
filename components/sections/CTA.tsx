@@ -11,8 +11,8 @@ export default function CTA() {
           демонстрації та оформлення постачання.
         </p>
         <div className="cta-buttons">
-          <Link href="#" className="btn-dark">Подати запит</Link>
-          <Link href="#" className="btn-dark-outline">Завантажити каталог</Link>
+          <Link href="/partners" className="btn-dark">Подати запит</Link>
+          <Link href="/products" className="btn-dark-outline">Каталог продукції</Link>
         </div>
       </div>
     </section>

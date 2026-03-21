@@ -86,8 +86,8 @@ export default function PartnersPage() {
           <h2 className="cta-title">СТАТИ ПАРТНЕРОМ</h2>
           <p className="cta-sub">Залиште заявку і наш менеджер зв&apos;яжеться з вами протягом 24 годин.</p>
           <div className="cta-buttons">
-            <a href="#" className="btn-dark">Залишити заявку</a>
-            <a href="#" className="btn-dark-outline">Умови співпраці</a>
+            <a href="mailto:info@okmond.ua" className="btn-dark">Залишити заявку</a>
+            <a href="/specs" className="btn-dark-outline">Специфікації</a>
           </div>
         </div>
       </section>

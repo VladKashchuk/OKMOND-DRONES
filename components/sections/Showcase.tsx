@@ -113,7 +113,7 @@ export default function Showcase() {
           style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', paddingRight: '80px' }}
         >
           <a
-            href="#"
+            href="/products"
             style={{
               fontFamily: 'var(--font-condensed)',
               fontSize: '12px',

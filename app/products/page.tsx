@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Navbar from '@/components/sections/Navbar'
 import Footer from '@/components/sections/Footer'
 import ScrollRevealProvider from '@/components/ui/ScrollRevealProvider'
+import Link from 'next/link'
 import { CAROUSEL_CARDS } from '@/lib/data'
 
 export default function ProductsPage() {
@@ -47,7 +48,7 @@ export default function ProductsPage() {
                     </div>
                   ))}
                 </div>
-                <a href="#" className="btn-secondary product-card-btn">Детальніше</a>
+                <Link href={`/products/${card.slug}`} className="btn-secondary product-card-btn">Детальніше</Link>
               </div>
             </div>
           ))}
@@ -61,8 +62,8 @@ export default function ProductsPage() {
           <h2 className="cta-title">ГОТОВІ ДО МІСІЇ?</h2>
           <p className="cta-sub">Зв&apos;яжіться з нами для отримання комерційної пропозиції та умов співпраці.</p>
           <div className="cta-buttons">
-            <a href="#" className="btn-dark">Зв&apos;язатися</a>
-            <a href="#" className="btn-dark-outline">Завантажити каталог</a>
+            <Link href="/partners" className="btn-dark">Зв&apos;язатися</Link>
+            <Link href="/specs" className="btn-dark-outline">Специфікації</Link>
           </div>
         </div>
       </section>

@@ -128,7 +128,7 @@ export default function ShowcaseV2() {
           </div>
         ))}
         <div className="sv2-bottom-item" style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', paddingRight: '80px' }}>
-          <a href="#" style={{ fontFamily: 'var(--font-condensed)', fontSize: '12px', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--gold)', textDecoration: 'none', fontWeight: 400 }}>
+          <a href="/products" style={{ fontFamily: 'var(--font-condensed)', fontSize: '12px', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--gold)', textDecoration: 'none', fontWeight: 400 }}>
             → ВСІ ПРОДУКТИ
           </a>
         </div>

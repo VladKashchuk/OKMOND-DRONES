@@ -6,6 +6,7 @@ export const SHOWCASE_MODELS = [
 ]
 
 export interface CarouselCard {
+  slug: string
   model: string
   role: string
   badge: string
@@ -13,55 +14,68 @@ export interface CarouselCard {
   gold?: boolean
   bottomLabels: string[]
   bottomVals: string[]
+  description?: string
 }
 
 export const CAROUSEL_CARDS: CarouselCard[] = [
   {
+    slug: 'ok-fpv',
     model: 'OK-FPV',
     role: 'Carbon Frame · 5"',
     badge: 'Деталь',
     img: '/images/1P7A9958.JPG',
+    description: 'Компактний FPV-дрон для точних ударних місій. Карбонова рама 5", висока маневреність та мінімальний час розгортання.',
     bottomLabels: ['Клас', 'Дальність', 'Навантаження', 'Швидкість'],
     bottomVals: ['FPV · Detail', '1 км', '0.5 кг', '150 км/год'],
   },
   {
+    slug: 'ok-fpv-raid',
     model: 'OK-FPV\nRAID',
     role: '180 км/год · 0.8 кг',
     badge: 'FPV Raid',
     img: '/images/1P7A9957.JPG',
+    description: 'Високошвидкісний FPV-дрон класу Raid для штурмових операцій. Збільшене навантаження та покращена аеродинаміка.',
     bottomLabels: ['Клас', 'Дальність', 'Навантаження', 'Швидкість'],
     bottomVals: ['FPV Raid', '1 км', '0.8 кг', '180 км/год'],
   },
   {
+    slug: 'ok-7-assault',
     model: 'OK-7\nASSAULT',
     role: '3 кг · 45 хв · 10 км',
     badge: '★ Флагман',
     img: '/images/1P7A1367.JPG',
     gold: true,
+    description: 'Флагманський штурмовий квадрокоптер з корисним навантаженням 3 кг. Дальність до 10 км, час польоту 45 хвилин. Захищений канал зв\'язку, Carbon Fiber 5 мм.',
     bottomLabels: ['Клас', 'Дальність', 'Навантаження', 'Швидкість'],
     bottomVals: ['Assault Class', '10 км', '3 кг', '120 км/год'],
   },
   {
+    slug: 'ok-7-pro',
     model: 'OK-7\nPRO',
     role: 'Extended Range Edition',
     badge: 'Assault Quad',
     img: '/images/1P7A1354.JPG',
+    description: 'Версія Pro з розширеною дальністю до 12 км та покращеною швидкістю. Призначений для складних тактичних завдань.',
     bottomLabels: ['Клас', 'Дальність', 'Навантаження', 'Швидкість'],
     bottomVals: ['Pro Series', '12 км', '3 кг', '135 км/год'],
   },
   {
+    slug: 'ok-recon',
     model: 'OK\nRECON',
     role: 'Розвідка · 15 км',
     badge: 'Розвідка',
     img: '/images/1P7A1360.JPG',
+    description: 'Розвідувальний дрон з дальністю 15 км та часом польоту до 60 хвилин. Тихий, малопомітний, з HD-відеотрансляцією в реальному часі.',
     bottomLabels: ['Клас', 'Дальність', 'Навантаження', 'Швидкість'],
     bottomVals: ['Recon Series', '15 км', '0.5 кг', '80 км/год'],
   },
   {
+    slug: 'ok-relay',
     model: 'OK\nRELAY',
     role: 'Ретрансляція сигналу',
     badge: 'Signal Relay',
     img: '/images/1P7A9944.JPG',
+    description: 'Дрон-ретранслятор для забезпечення стабільного зв\'язку на дальності до 20 км. Автономний час роботи до 90 хвилин.',
     bottomLabels: ['Клас', 'Дальність', 'Навантаження', 'Швидкість'],
     bottomVals: ['Relay Series', '20 км', '0.3 кг', '70 км/год'],
   },
