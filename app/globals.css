@@ -26,6 +26,17 @@ html {
   scrollbar-width: thin;
 }
 
+/* Lenis smooth scroll */
+html.lenis, html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
 /* Webkit scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
@@ -2150,12 +2161,12 @@ footer {
 /* Enter: overlay slides in from bottom */
 .page-transition.enter {
   background: var(--bg);
-  animation: ptEnter 0.45s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+  animation: ptEnter 0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards;
 }
 /* Exit: overlay slides out to top */
 .page-transition.exit {
   background: var(--bg);
-  animation: ptExit 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: ptExit 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @keyframes ptEnter {
@@ -2175,12 +2186,12 @@ footer {
   background: var(--gold);
 }
 .page-transition.enter .page-transition-bar {
-  animation: ptBar 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
+  animation: ptBar 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
   width: 0;
 }
 .page-transition.exit .page-transition-bar {
   width: 100%;
-  animation: ptBarOut 0.3s ease forwards;
+  animation: ptBarOut 0.4s ease forwards;
 }
 @keyframes ptBar {
   from { width: 0; }
@@ -2195,11 +2206,11 @@ footer {
   opacity: 0;
 }
 .page-transition.enter .page-transition-label {
-  animation: ptLabel 0.35s cubic-bezier(0.16, 1, 0.3, 1) 0.08s forwards;
+  animation: ptLabel 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.12s forwards;
 }
 .page-transition.exit .page-transition-label {
   opacity: 1;
-  animation: ptLabelOut 0.25s ease forwards;
+  animation: ptLabelOut 0.35s ease forwards;
 }
 @keyframes ptLabel {
   from { opacity: 0; transform: translateY(12px); }

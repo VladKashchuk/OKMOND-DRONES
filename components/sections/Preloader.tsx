@@ -13,6 +13,9 @@ export default function Preloader() {
     const numEl = numRef.current as HTMLSpanElement
     const barEl = barRef.current as HTMLDivElement
 
+    // Block scroll while preloader is active
+    document.body.classList.add('preloading')
+
     const DURATION = 2400
 
     function ease(t: number) {

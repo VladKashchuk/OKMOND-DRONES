@@ -1,36 +1,43 @@
 'use client'
 
 import { usePathname } from 'next/navigation'
-import { useEffect, useState, useCallback } from 'react'
+import { useEffect, useState, useCallback, useRef } from 'react'
+import { createPortal } from 'react-dom'
+import { useLenis } from './LenisProvider'
 
 export default function PageTransition() {
   const pathname = usePathname()
+  const lenis = useLenis()
   const [phase, setPhase] = useState<'idle' | 'enter' | 'exit'>('idle')
-  const [prevPath, setPrevPath] = useState(pathname)
+  const prevPathRef = useRef(pathname)
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => { setMounted(true) }, [])
 
   const runExit = useCallback(() => {
     setPhase('exit')
-    setTimeout(() => setPhase('idle'), 600)
+    setTimeout(() => setPhase('idle'), 900)
   }, [])
 
   useEffect(() => {
-    if (pathname !== prevPath) {
-      setPrevPath(pathname)
+    if (pathname !== prevPathRef.current) {
+      prevPathRef.current = pathname
       runExit()
-      // scroll to top on page change
-      window.scrollTo(0, 0)
+      if (lenis) {
+        lenis.scrollTo(0, { immediate: true })
+      } else {
+        window.scrollTo(0, 0)
+      }
     }
-  }, [pathname, prevPath, runExit])
+  }, [pathname, runExit])
 
-  // Intercept link clicks to trigger enter animation
   useEffect(() => {
     function handleClick(e: MouseEvent) {
       const anchor = (e.target as HTMLElement).closest('a')
       if (!anchor) return
       const href = anchor.getAttribute('href')
-      if (!href || href.startsWith('#') || href.startsWith('http')) return
+      if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto') || href.startsWith('tel')) return
       if (href === pathname) return
-
       setPhase('enter')
     }
 
@@ -38,14 +45,15 @@ export default function PageTransition() {
     return () => document.removeEventListener('click', handleClick, true)
   }, [pathname])
 
-  if (phase === 'idle') return null
+  if (!mounted) return null
 
-  return (
-    <div className={`page-transition ${phase}`}>
+  return createPortal(
+    <div className={`page-transition ${phase}`} style={{ display: phase === 'idle' ? 'none' : 'flex' }}>
       <div className="page-transition-bar" />
       <div className="page-transition-label">
         <span>OKMOND</span>
       </div>
-    </div>
+    </div>,
+    document.body
   )
 }

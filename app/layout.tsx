@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Oswald, Inter } from 'next/font/google'
 import './globals.css'
 import PageTransition from '@/components/ui/PageTransition'
+import LenisProvider from '@/components/ui/LenisProvider'
 
 const oswald = Oswald({
   subsets: ['latin'],
@@ -29,9 +30,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="uk" className={`${oswald.variable} ${inter.variable}`}>
-      <body className="preloading">
-        <PageTransition />
-        {children}
+      <body>
+        <LenisProvider>
+          <PageTransition />
+          {children}
+        </LenisProvider>
       </body>
     </html>
   )
