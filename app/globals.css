@@ -959,20 +959,18 @@ nav {
 
 /* Cards track */
 .sv2-track {
-  display: flex;
-  align-items: flex-end;
-  gap: 10px;
+  position: relative;
   padding: 0 80px;
-  padding-bottom: 0;
   height: 560px;
   overflow: hidden;
 }
 
 .sv2-card {
-  position: relative;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
   border-radius: 4px;
   overflow: hidden;
-  flex-shrink: 0;
   cursor: pointer;
 }
 .sv2-card img {
@@ -1805,12 +1803,13 @@ footer {
 .showcase-subtitle { transition: opacity 0.25s ease; }
 .showcase-subtitle.fading { opacity: 0; }
 
-/* ── Carousel card transitions — CSS does ALL animation work */
+/* ── Carousel card transitions — transform-based positioning */
 .sv2-card {
   transition:
-    width   0.58s cubic-bezier(0.16, 1, 0.3, 1),
-    height  0.58s cubic-bezier(0.16, 1, 0.3, 1),
-    opacity 0.4s  cubic-bezier(0.16, 1, 0.3, 1);
+    transform 0.58s cubic-bezier(0.16, 1, 0.3, 1),
+    width     0.58s cubic-bezier(0.16, 1, 0.3, 1),
+    height    0.58s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity   0.4s  cubic-bezier(0.16, 1, 0.3, 1);
 }
 .sv2-card:not(.active-card) { cursor: pointer; }
 .sv2-card:not(.active-card):hover { opacity: 0.8; }
@@ -2567,7 +2566,7 @@ footer {
   #showcase-v2 { padding: 80px 0 0; }
   .sv2-header { padding: 0 40px; }
   .sv2-title { font-size: 72px; }
-  .sv2-track { padding: 0 40px; overflow-x: auto; height: 560px; }
+  .sv2-track { padding: 0 40px; height: 560px; }
   .sv2-bottom { flex-wrap: wrap; }
   .sv2-bottom-item { flex: 0 0 50%; }
   .sv2-bottom-item:nth-child(even) { border-right: none; }
@@ -2705,7 +2704,7 @@ footer {
   .sv2-title-row { flex-direction: column; gap: 16px; align-items: flex-start; }
   .sv2-title { font-size: 48px; }
   .sv2-header-right { align-items: flex-start; text-align: left; }
-  .sv2-track { padding: 0 20px; overflow-x: auto; gap: 8px; -webkit-overflow-scrolling: touch; height: 420px; }
+  .sv2-track { padding: 0 20px; height: 420px; }
   .sv2-card.sm { width: 160px; height: 280px; }
   .sv2-card.md { width: 200px; height: 340px; }
   .sv2-card.lg { width: 260px; height: 420px; }

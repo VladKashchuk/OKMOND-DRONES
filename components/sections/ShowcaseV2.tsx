@@ -12,19 +12,46 @@ function sizeOf(rel: number) {
   return 'sm'
 }
 
+/* Card pixel widths per breakpoint — must match globals.css */
+function getCardSizes() {
+  if (typeof window === 'undefined') return { lg: 360, md: 270, sm: 220, gap: 10 }
+  const vw = window.innerWidth
+  if (vw <= 768) return { lg: 260, md: 200, sm: 160, gap: 8 }
+  return { lg: 360, md: 270, sm: 220, gap: 10 }
+}
+
+/* Pixel offset from center for a given rel position */
+function getOffset(
+  rel: number,
+  s: { lg: number; md: number; sm: number; gap: number },
+) {
+  const a = Math.abs(rel)
+  const sign = rel > 0 ? 1 : -1
+  if (a === 0) return 0
+  if (a === 1) return sign * (s.lg / 2 + s.gap + s.md / 2)
+  if (a === 2) return sign * (s.lg / 2 + s.gap + s.md + s.gap + s.sm / 2)
+  // hidden cards — park off-screen so they never flash in view
+  return sign * (s.lg / 2 + s.gap + s.md + s.gap + s.sm + 300)
+}
+
 export default function ShowcaseV2() {
   const [activeIdx, setActiveIdx] = useState(2) // OK-7 ASSAULT starts featured
   const [initialized, setInitialized] = useState(false)
+  const [sizes, setSizes] = useState({ lg: 360, md: 270, sm: 220, gap: 10 })
   const trackRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    // Disable transitions for initial paint
+    setSizes(getCardSizes())
     setInitialized(false)
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         setInitialized(true)
       })
     })
+
+    const onResize = () => setSizes(getCardSizes())
+    window.addEventListener('resize', onResize)
+    return () => window.removeEventListener('resize', onResize)
   }, [])
 
   function navigateTo(newIdx: number) {
@@ -69,7 +96,7 @@ export default function ShowcaseV2() {
         </div>
       </div>
 
-      {/* Carousel cards track */}
+      {/* Carousel — absolutely positioned cards, animated via transform */}
       <div className="sv2-track" data-reveal="scale" ref={trackRef}>
         {CAROUSEL_CARDS.map((card, idx) => {
           let rel = idx - activeIdx
@@ -79,18 +106,19 @@ export default function ShowcaseV2() {
           const visible = Math.abs(rel) <= 2
           const size = sizeOf(rel)
           const isActive = rel === 0
+          const offset = getOffset(rel, sizes)
 
           return (
             <div
               key={idx}
               className={`sv2-card ${size}${isActive ? ' active-card' : ''}`}
               style={{
-                order: rel,
-                cursor: isActive ? 'default' : 'pointer',
-                width: !visible ? '0' : undefined,
-                opacity: !visible ? 0 : undefined,
-                pointerEvents: !visible ? 'none' : undefined,
+                transform: `translateX(calc(-50% + ${offset}px))`,
+                opacity: visible ? 1 : 0,
+                pointerEvents: visible ? undefined : 'none',
                 transition: initialized ? undefined : 'none',
+                zIndex: 3 - Math.min(Math.abs(rel), 3),
+                cursor: isActive ? 'default' : 'pointer',
               }}
               onClick={() => {
                 if (!isActive) navigateTo(idx)
@@ -109,7 +137,6 @@ export default function ShowcaseV2() {
                 <div className="sv2-card-foot">
                   <div
                     className="sv2-card-model"
-                    style={{ fontSize: isActive ? '48px' : undefined }}
                     dangerouslySetInnerHTML={{ __html: card.model.replace('\n', '<br>') }}
                   />
                   <div className="sv2-card-role">{card.role}</div>

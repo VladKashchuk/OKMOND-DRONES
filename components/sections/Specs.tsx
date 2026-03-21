@@ -21,9 +21,6 @@ export default function Specs() {
           <div className="specs-model-primary">
             OK-7<br />ASSAULT
           </div>
-          <div className="specs-model-secondary">
-            OK-FPV<br />RAID
-          </div>
           <p className="specs-desc">
             Розроблено для реального бойового застосування.
             Кожен компонент відібрано під умови України —
